@@ -1,4 +1,4 @@
-package xyz.minum.empress.impl.modules;
+package xyz.minum.empress.impl.modules.player;
 
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.network.play.server.SPacketExplosion;
@@ -17,17 +17,19 @@ public class Velocity extends Module {
     }
 
     @SubscribeEvent
-    public void onPacket(PacketEvent event){
-        if (mc.player == null) return;
+    public void onPacket(PacketEvent event) {
+        if (mc.player == null) {
+            return;
+        }
 
-        if(event.getPacket() instanceof SPacketExplosion){
+        if (event.getPacket() instanceof SPacketExplosion) {
             SPacketExplosion packet = (SPacketExplosion) event.getPacket();
             packet.motionX *= multplier.getValue();
             packet.motionY *= multplier.getValue();
             packet.motionZ *= multplier.getValue();
         }
 
-        if(event.getPacket() instanceof SPacketEntityVelocity){
+        if (event.getPacket() instanceof SPacketEntityVelocity) {
             SPacketEntityVelocity packet = (SPacketEntityVelocity) event.getPacket();
             if (packet.getEntityID() == mc.player.getEntityId()) {
                 packet.motionX *= multplier.getValue();

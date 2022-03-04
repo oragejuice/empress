@@ -3,7 +3,7 @@ package xyz.minum.empress.impl.gui;
 import net.minecraft.client.gui.GuiScreen;
 import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.utils.render.GuiUtils;
-import xyz.minum.empress.impl.modules.ClickGui;
+import xyz.minum.empress.impl.modules.client.ClickGui;
 
 import java.awt.*;
 import java.io.IOException;

@@ -14,12 +14,14 @@ public class TestModule extends Module {
 
     public TestModule() {
         super("TestModule", Category.client);
-        this.setBind(Keyboard.KEY_P);
     }
 
     @SubscribeEvent
-    public void onTick(TickEvent event){
-        if(mc.player == null || mc.world == null) return;
+    public void onTick(TickEvent event) {
+        if(mc.player == null || mc.world == null) {
+            return;
+        }
         mc.player.sendChatMessage(testSetting.getValue().toString());
+        toggle();
     }
 }
