@@ -4,14 +4,26 @@ import java.io.InputStream;
 
 public class FontUtil {
 
-    private static FontRenderer globalFont = new FontRenderer(getFont("JetBrainsMono-Regular", 35));
+    private static FontRenderer globalFont = new FontRenderer(getFont("JetBrainsMono-Regular", 30));
 
     public static void drawString(String text, float x, float y, int color){
         if(globalFont == null){
-            globalFont = new FontRenderer(getFont("JetBrainsMono-Regular", 35));
+            globalFont = new FontRenderer(getFont("JetBrainsMono-Regular", 30));
         }
         globalFont.drawString(text, x, y, color, false);
     }
+
+    public static void drawString(String text, float x, float y, int color, fonts font){
+        FontRenderer fontRenderer = new FontRenderer(getFont("JetBrainsMono-Regular", 30));
+        if(font.equals(fonts.JetBrains)){
+            fontRenderer = new FontRenderer(getFont("JetBrainsMono-Regular", 30));
+        } else if (font.equals(fonts.Helvetica)){
+            fontRenderer = new FontRenderer(getFont("Helvetica", 30));
+        }
+        globalFont.drawString(text, x, y, color, false);
+    }
+
+
 
     public static int getFontHeight(){
         return  globalFont.FONT_HEIGHT;
@@ -35,5 +47,10 @@ public class FontUtil {
             exception.printStackTrace();
             return new java.awt.Font("default", java.awt.Font.PLAIN, (int) size);
         }
+    }
+
+    public enum fonts{
+        JetBrains,
+        Helvetica
     }
 }

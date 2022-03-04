@@ -17,7 +17,7 @@ public class ModuleButton extends GuiComponent {
     }
 
     public void draw(int mouseX, int mouseY, float partialTicks){
-        FontUtil.drawString(module.getName(), x, y, module.isEnabled() ? Color.WHITE.getRGB() : Color.LIGHT_GRAY.getRGB());
+        FontUtil.drawString(module.getName(), x, y, module.isEnabled() ? Color.WHITE.getRGB() : Color.LIGHT_GRAY.getRGB(), FontUtil.fonts.Helvetica);
     }
 
 

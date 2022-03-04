@@ -1,7 +1,9 @@
 package xyz.minum.empress.impl.gui;
 
 import net.minecraft.client.gui.GuiScreen;
+import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.utils.render.GuiUtils;
+import xyz.minum.empress.impl.modules.ClickGui;
 
 import java.awt.*;
 import java.io.IOException;
@@ -28,8 +30,14 @@ public class inteliiGUI extends GuiScreen {
 
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
-
         super.keyTyped(typedChar, keyCode);
     }
+
+    @Override
+    public void onGuiClosed() {
+        super.onGuiClosed();
+        Empress.INSTANCE.moduleManager.getModule(ClickGui.class).toggle();
+    }
+
 
 }

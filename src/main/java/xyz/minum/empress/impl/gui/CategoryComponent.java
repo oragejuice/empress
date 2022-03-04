@@ -6,6 +6,7 @@ import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Category;
 import xyz.minum.empress.api.module.Module;
 import xyz.minum.empress.api.utils.render.GuiComponent;
+import xyz.minum.empress.api.utils.render.GuiUtils;
 import xyz.minum.empress.api.utils.render.font.FontUtil;
 
 import java.awt.*;
@@ -29,12 +30,16 @@ public class CategoryComponent extends GuiComponent {
             subModulesHeight += FontUtil.getFontHeight();
         }
 
-
     }
 
 
     public void draw(int mouseX, int mouseY, float partialTicks){
-        FontUtil.drawString(category.name(), x, y, visible ? Color.WHITE.getRGB() : Color.LIGHT_GRAY.getRGB());
+        FontUtil.drawString(category.name(), x, y, visible ? Color.WHITE.getRGB() : Color.LIGHT_GRAY.getRGB(), FontUtil.fonts.Helvetica);
+        if (visible) {
+            GuiUtils.drawSideArrow(x - 4, y + 3);
+        } else {
+            GuiUtils.drawDownwardsArrow(x - 4, y + 3);
+        }
 
         subModulesHeight = 0;
         if(visible) {
