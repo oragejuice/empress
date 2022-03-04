@@ -1,0 +1,12 @@
+{
+  "compatibilityLevel": "JAVA_8",
+  "package": "xyz.minum.empress.core.mixins",
+  "refmap": "mixins.empress.refmap.json",
+  "mixins": [
+    "MixinNetworkManager"
+  ],
+  "client": [
+    "MixinMinecraft"
+  ],
+  "server": []
+}
