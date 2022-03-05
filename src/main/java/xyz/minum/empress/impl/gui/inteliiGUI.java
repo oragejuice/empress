@@ -17,6 +17,8 @@ public class inteliiGUI extends GuiScreen {
     Sidebar sidebar = new Sidebar(50,30,100,400);
 
     private CopyOnWriteArrayList<TabButton> tabs = new CopyOnWriteArrayList<>();
+    private TabButton focusedTab;
+    private SettingDisplay settingDisplay = new SettingDisplay(150,50,540,500);
 
 
     @Override
@@ -36,6 +38,8 @@ public class inteliiGUI extends GuiScreen {
             tabButton.draw(mouseX, mouseY, partialTicks);
             xOffset += 70;
         }
+
+        settingDisplay.draw();
     }
 
     @Override
@@ -45,6 +49,8 @@ public class inteliiGUI extends GuiScreen {
         for(TabButton tabButton : tabs){
             tabButton.mouseClicked(mouseX, mouseY, mouseButton);
         }
+
+
     }
 
     @Override
@@ -67,12 +73,36 @@ public class inteliiGUI extends GuiScreen {
         }
     }
 
+    public boolean tabExist(Module module){
+        for(TabButton tabButton : tabs){
+            if(tabButton.module == module){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void removeTab(TabButton tabButton){
         tabs.remove(tabButton);
     }
 
     public void addTab(Module module){
-        tabs.add(new TabButton(150+(tabs.size()*50), 30,70,20, module));
+        if(tabExist(module)) return;
+        TabButton tabButton = new TabButton(150+(tabs.size()*50), 30,70,20, module);
+        tabs.add(tabButton);
+        setFocusedTab(tabButton);
+    }
+
+    public void setFocusedTab(TabButton tabButton){
+        focusedTab = tabButton;
+        for(TabButton button : tabs){
+            if(button != tabButton){
+                button.focused = false;
+            }
+        }
+
+        settingDisplay.updateScreen(tabButton.module);
+
     }
 
 

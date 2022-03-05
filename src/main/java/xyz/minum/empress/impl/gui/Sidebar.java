@@ -26,8 +26,8 @@ public class Sidebar extends GuiComponent {
         int yOffset = 5;
         for(Category c : Category.values()){
             //Empress.logger.info(c.toString());
-            CategoryComponent component = new CategoryComponent(x+15, y+yOffset + 30, FontUtil.getStringWidth(c.toString()),FontUtil.getFontHeight(), c);
-            yOffset += FontUtil.getFontHeight() + component.subModulesHeight + 3;
+            CategoryComponent component = new CategoryComponent(x+15, y+yOffset + 30, FontUtil.getStringWidth(c.toString()),FontUtil.getFontHeight(FontUtil.fonts.Helvetica), c);
+            yOffset += FontUtil.getFontHeight(FontUtil.fonts.Helvetica) + component.subModulesHeight + 3;
             categoryComponents.add(component);
         }
         Empress.logger.info(categoryComponents.isEmpty());
@@ -38,7 +38,7 @@ public class Sidebar extends GuiComponent {
 
         GuiUtils.drawBox(x,y,width,20, new Color(49, 51, 53));
 
-        FontUtil.drawString(Empress.MOD_ID + " - " + formatter.format(date),x+4,y+9, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);
+        FontUtil.drawString(Empress.MOD_ID + " - " + formatter.format(date),x+5,y+9, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);
 
         FontUtil.drawString(Empress.MOD_ID+"."+Empress.VERSION, x+7,y+24, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);
         GuiUtils.drawDownwardsArrow(x+3,y+25);
@@ -48,7 +48,7 @@ public class Sidebar extends GuiComponent {
         for(CategoryComponent component : categoryComponents){
             component.updatePosition(x+15, y+yOffset + 30);
             component.draw(mouseX, mouseY, partialTicks);
-            yOffset += FontUtil.getFontHeight() + component.subModulesHeight + 3;
+            yOffset += FontUtil.getFontHeight(FontUtil.fonts.Helvetica) + component.subModulesHeight + 3;
         }
 
     }

@@ -10,7 +10,13 @@ import xyz.minum.empress.api.setting.Setting;
 public class TestModule extends Module {
 
 
-    static Setting<Boolean> testSetting = new Setting<>("testSetting", true);
+    public static Setting<Boolean> testSetting = new Setting<>("testSetting", true);
+    public static Setting<Boolean> testSetting2 = new Setting<>("testSetting2", true);
+    public static Setting<Boolean> testSetting3 = new Setting<>("testSetting3", true);
+    public static Setting<Boolean> testSetting4 = new Setting<>("testSetting4", true);
+
+
+
 
     public TestModule() {
         super("TestModule", Category.client);

@@ -1,7 +1,5 @@
 package xyz.minum.empress.impl.gui;
 
-import net.minecraft.client.Minecraft;
-import scala.collection.parallel.ParIterableLike;
 import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Category;
 import xyz.minum.empress.api.module.Module;
@@ -25,9 +23,8 @@ public class CategoryComponent extends GuiComponent {
         this.category = category;
 
         for(Module module : Empress.INSTANCE.moduleManager.getModules(category)){
-            moduleButtons.add(new ModuleButton(x+10,y+FontUtil.getFontHeight() + subModulesHeight, FontUtil.getStringWidth(module.getName()), FontUtil.getFontHeight(), module ));
-
-            subModulesHeight += FontUtil.getFontHeight();
+            moduleButtons.add(new ModuleButton(x+10,y+FontUtil.getFontHeight(FontUtil.fonts.Helvetica) + subModulesHeight, FontUtil.getStringWidth(module.getName()), FontUtil.getFontHeight(FontUtil.fonts.Helvetica), module ));
+            subModulesHeight += FontUtil.getFontHeight(FontUtil.fonts.Helvetica);
         }
 
     }
@@ -36,17 +33,18 @@ public class CategoryComponent extends GuiComponent {
     public void draw(int mouseX, int mouseY, float partialTicks){
         FontUtil.drawString(category.name(), x, y, visible ? Color.WHITE.getRGB() : Color.LIGHT_GRAY.getRGB(), FontUtil.fonts.Helvetica);
         if (visible) {
-            GuiUtils.drawSideArrow(x - 4, y + 1);
-        } else {
             GuiUtils.drawDownwardsArrow(x - 4, y + 1);
+        } else {
+            GuiUtils.drawSideArrow(x - 4, y + 1);
+
         }
 
         subModulesHeight = 0;
         if(visible) {
             for (ModuleButton moduleButton : moduleButtons) {
-                moduleButton.updatePosition(x+10,y+FontUtil.getFontHeight() + subModulesHeight);
+                moduleButton.updatePosition(x+10,y+FontUtil.getFontHeight(FontUtil.fonts.Helvetica) + subModulesHeight + 2);
                 moduleButton.draw(mouseX, mouseY, partialTicks);
-                subModulesHeight += FontUtil.getFontHeight()+3;
+                subModulesHeight += FontUtil.getFontHeight(FontUtil.fonts.Helvetica)+3;
             }
             /*
             for(Module module : Empress.INSTANCE.moduleManager.getModules(category)){

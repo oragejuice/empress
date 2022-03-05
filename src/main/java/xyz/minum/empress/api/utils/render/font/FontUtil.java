@@ -25,8 +25,15 @@ public class FontUtil {
 
 
 
-    public static int getFontHeight(){
-        return  globalFont.FONT_HEIGHT;
+    public static int getFontHeight(fonts font){
+        if(font == fonts.JetBrains){
+            return  globalFont.FONT_HEIGHT;
+        } else if (font == fonts.Helvetica){
+            return fontRenderer.FONT_HEIGHT;
+        }
+        else {
+            return  globalFont.FONT_HEIGHT;
+        }
     }
 
     public static int getStringWidth(String text) {

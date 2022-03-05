@@ -2,14 +2,17 @@ package xyz.minum.empress.api.utils.render;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import org.lwjgl.opengl.GL11;
+import xyz.minum.empress.Empress;
+import xyz.minum.empress.api.Globals;
 
 import java.awt.*;
 
-import static org.lwjgl.opengl.GL11.GL_NICEST;
-import static org.lwjgl.opengl.GL11.GL_POLYGON_SMOOTH_HINT;
+import static org.lwjgl.opengl.GL11.*;
 
-public class GuiUtils {
+public class GuiUtils implements Globals {
+
 
     public static void drawBox(int x, int y, int width, int height, Color color){
         GuiScreen.drawRect(x,y,x+width, y+height, color.getRGB());
