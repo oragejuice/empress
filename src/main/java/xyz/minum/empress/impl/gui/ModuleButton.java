@@ -27,10 +27,9 @@ public class ModuleButton extends GuiComponent {
             if (mouseButton == 0) module.toggle();
             if (mouseButton == 1) {
                 Empress.INSTANCE.moduleManager.getModule(ClickGui.class).intelliGUI.addTab(module);
-                Empress.logger.info("Clicked with rmousebutton" + module.getName());
-
             }
         }
+
     }
 
     public void updatePosition(int x, int y){

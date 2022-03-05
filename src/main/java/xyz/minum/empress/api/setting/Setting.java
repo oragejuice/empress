@@ -3,8 +3,8 @@ package xyz.minum.empress.api.setting;
 public class Setting<T> {
 
     private String name;
-    private Setting<?> parent;
-    private T requiredValue;
+    //private Setting<?> parent;
+    //private T requiredValue;
     private T value;
 
     /* should be used for double or float settings only */

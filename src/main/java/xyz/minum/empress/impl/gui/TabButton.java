@@ -24,9 +24,9 @@ public class TabButton extends GuiComponent {
     }
 
     public void draw(int mouseX, int mouseY, float partialTicks) {
-
+        int centerStringX = (width/2) - (FontUtil.getStringWidth(module.getName()) / 2);
         GuiUtils.drawBox(x,y,width,height, focused ? new Color(131, 128, 128) : new Color(43,43,43));
-        FontUtil.drawString(module.getName(), x+4, y+6, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);
+        FontUtil.drawString(module.getName(), x+centerStringX, y+6, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);
         xWidget.updatePosition(x+width-10, y+7);
         xWidget.draw();
         GuiUtils.drawBox(x,y+17,width,3, new Color(213, 213, 213));

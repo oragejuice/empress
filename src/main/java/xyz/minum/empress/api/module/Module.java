@@ -10,6 +10,9 @@ import java.util.Arrays;
 public abstract class Module implements Globals {
 
     private String name;
+
+
+    private String description = "";
     private boolean enabled =  false;
     private int bind;
     private final Category category;
@@ -20,6 +23,24 @@ public abstract class Module implements Globals {
         this.name = name;
         this.category = category;
 
+
+        Arrays.stream(this.getClass().getFields())
+                .filter(field -> Setting.class.isAssignableFrom(field.getType()))
+                .forEach(field -> {
+                    field.setAccessible(true);
+                    try {
+                        Setting<?> setting = ((Setting<?>) field.get(this));
+                        settings.add(setting);
+                    } catch (IllegalArgumentException | IllegalAccessException exception) {
+                        exception.printStackTrace();
+                    }
+                });
+    }
+
+    public Module(String name, Category category, String description){
+        this.name = name;
+        this.category = category;
+        this.description = description;
 
         Arrays.stream(this.getClass().getFields())
                 .filter(field -> Setting.class.isAssignableFrom(field.getType()))
@@ -73,6 +94,10 @@ public abstract class Module implements Globals {
 
     public void setBind(int bind) {
         this.bind = bind;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public Category getCategory() {

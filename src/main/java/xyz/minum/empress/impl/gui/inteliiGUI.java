@@ -3,12 +3,12 @@ package xyz.minum.empress.impl.gui;
 import net.minecraft.client.gui.GuiScreen;
 import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Module;
+import xyz.minum.empress.api.utils.MathUtils;
 import xyz.minum.empress.api.utils.render.GuiUtils;
 import xyz.minum.empress.impl.modules.client.ClickGui;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
@@ -18,7 +18,7 @@ public class inteliiGUI extends GuiScreen {
 
     private CopyOnWriteArrayList<TabButton> tabs = new CopyOnWriteArrayList<>();
     private TabButton focusedTab;
-    private SettingDisplay settingDisplay = new SettingDisplay(150,50,540,500);
+    private SettingDisplay settingDisplay = new SettingDisplay(155,60,540,500);
 
 
     @Override
@@ -39,7 +39,7 @@ public class inteliiGUI extends GuiScreen {
             xOffset += 70;
         }
 
-        settingDisplay.draw();
+        settingDisplay.draw(mouseX, mouseY, partialTicks);
     }
 
     @Override
@@ -50,12 +50,13 @@ public class inteliiGUI extends GuiScreen {
             tabButton.mouseClicked(mouseX, mouseY, mouseButton);
         }
 
-
+        settingDisplay.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     @Override
-    protected void keyTyped(char typedChar, int keyCode) throws IOException {
+    public void keyTyped(char typedChar, int keyCode) throws IOException {
         super.keyTyped(typedChar, keyCode);
+        settingDisplay.keyTyped(typedChar, keyCode);
     }
 
     @Override
@@ -68,9 +69,21 @@ public class inteliiGUI extends GuiScreen {
         for(TabButton tabButton : tabs){
             if(tabButton.module == module){
                 tabs.remove(tabButton);
+                if(tabs.isEmpty()){
+                    setFocusedTab(null);
+                }
                 return;
             }
         }
+    }
+
+    public TabButton getTab(Module module){
+        for(TabButton tabButton : tabs){
+            if(tabButton.module == module){
+                return tabButton;
+            }
+        }
+        return null;
     }
 
     public boolean tabExist(Module module){
@@ -83,7 +96,15 @@ public class inteliiGUI extends GuiScreen {
     }
 
     public void removeTab(TabButton tabButton){
+        int i = tabs.indexOf(tabButton);
         tabs.remove(tabButton);
+        if(tabs.isEmpty()){
+            setFocusedTab(null);
+        } else {
+            setFocusedTab(tabs.get(MathUtils.true_mod(i-1, tabs.size())));
+            Empress.logger.info("removing tab: " +String.valueOf(MathUtils.true_mod(i-1, tabs.size())) + " : " + String.valueOf(tabs.size()));
+        }
+
     }
 
     public void addTab(Module module){
@@ -91,7 +112,10 @@ public class inteliiGUI extends GuiScreen {
         TabButton tabButton = new TabButton(150+(tabs.size()*50), 30,70,20, module);
         tabs.add(tabButton);
         setFocusedTab(tabButton);
+
     }
+
+
 
     public void setFocusedTab(TabButton tabButton){
         focusedTab = tabButton;
@@ -100,8 +124,10 @@ public class inteliiGUI extends GuiScreen {
                 button.focused = false;
             }
         }
-
-        settingDisplay.updateScreen(tabButton.module);
+        settingDisplay.updateScreen(tabButton);
+        if(tabButton != null) {
+            tabButton.focused = true;
+        }
 
     }
 

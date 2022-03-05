@@ -22,6 +22,7 @@ public class Velocity extends Module {
             return;
         }
 
+
         if (event.getPacket() instanceof SPacketExplosion) {
             SPacketExplosion packet = (SPacketExplosion) event.getPacket();
             packet.motionX *= multplier.getValue();

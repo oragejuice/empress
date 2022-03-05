@@ -58,6 +58,7 @@ public class CategoryComponent extends GuiComponent {
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton){
+
         if(inside(mouseX, mouseY)) {
             this.visible = !visible;
         }

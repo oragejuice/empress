@@ -25,12 +25,10 @@ public class Sidebar extends GuiComponent {
 
         int yOffset = 5;
         for(Category c : Category.values()){
-            //Empress.logger.info(c.toString());
             CategoryComponent component = new CategoryComponent(x+15, y+yOffset + 30, FontUtil.getStringWidth(c.toString()),FontUtil.getFontHeight(FontUtil.fonts.Helvetica), c);
             yOffset += FontUtil.getFontHeight(FontUtil.fonts.Helvetica) + component.subModulesHeight + 3;
             categoryComponents.add(component);
         }
-        Empress.logger.info(categoryComponents.isEmpty());
     }
 
     public void draw(int mouseX, int mouseY, float partialTicks){

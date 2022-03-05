@@ -265,10 +265,10 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer implemen
             ColorUtils.hexColors[0] = 0;
             ColorUtils.hexColors[1] = 170;
             ColorUtils.hexColors[2] = 43520;
-            ColorUtils.hexColors[3] = 43690;
-            ColorUtils.hexColors[4] = 0xAA0000;
+            ColorUtils.hexColors[3] = 0x9876AA; //intelliJ purple | §3
+            ColorUtils.hexColors[4] = 0xFFC66D; //intelliJ yellow §4
             ColorUtils.hexColors[5] = 0xAA00AA;
-            ColorUtils.hexColors[6] = 0xFFAA00;
+            ColorUtils.hexColors[6] = 0xCC7832; //intellij orange | §6
             ColorUtils.hexColors[7] = 0xAAAAAA;
             ColorUtils.hexColors[8] = 0x555555;
             ColorUtils.hexColors[9] = 0x5555FF;
@@ -277,7 +277,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer implemen
             ColorUtils.hexColors[12] = 0xFF5555;
             ColorUtils.hexColors[13] = 0xFF55FF;
             ColorUtils.hexColors[14] = 0xFFFF55;
-            ColorUtils.hexColors[15] = 0xFFFFFF;
+            ColorUtils.hexColors[15] = 0xA9B7C6; //white
             random = new Random();
         }
     }

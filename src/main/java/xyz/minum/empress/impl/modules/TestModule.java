@@ -14,7 +14,7 @@ public class TestModule extends Module {
     public static Setting<Boolean> testSetting2 = new Setting<>("testSetting2", true);
     public static Setting<Boolean> testSetting3 = new Setting<>("testSetting3", true);
     public static Setting<Boolean> testSetting4 = new Setting<>("testSetting4", true);
-
+    public static Setting<testEnum> testEnumSetting1 = new Setting<>("testEnumSetting", testEnum.poop);
 
 
 
@@ -32,5 +32,9 @@ public class TestModule extends Module {
     public void onEnable(){
         super.onEnable();
         mc.player.sendChatMessage("TestModule enabled!!!!");
+    }
+
+    public enum testEnum {
+        poop, more, shit, fart
     }
 }

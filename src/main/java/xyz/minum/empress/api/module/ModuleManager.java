@@ -4,6 +4,7 @@ package xyz.minum.empress.api.module;
 import xyz.minum.empress.impl.modules.client.ClickGui;
 import xyz.minum.empress.impl.modules.TestModule;
 import xyz.minum.empress.impl.modules.player.Velocity;
+import xyz.minum.empress.impl.modules.world.Fullbright;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ public class ModuleManager {
         modules.add(new TestModule());
         modules.add(new ClickGui());
         modules.add(new Velocity());
+        modules.add(new Fullbright());
 
     }
 
