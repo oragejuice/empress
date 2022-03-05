@@ -18,13 +18,13 @@ public class TabButton extends GuiComponent {
     public TabButton(int x, int y, int width, int height, Module module) {
         super(x, y, width, height);
         this.module = module;
-        xWidget = new XWidget(x+width-10,y+10);
+        xWidget = new XWidget(x+width-10,y+13);
     }
 
     public void draw(int mouseX, int mouseY, float partialTicks) {
         GuiUtils.drawBox(x,y,width,height, new Color(43,43,43));
         FontUtil.drawString(module.getName(), x+4, y+6, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);
-        xWidget.updatePosition(x+width-10, y+10);
+        xWidget.updatePosition(x+width-10, y+13);
         xWidget.draw();
         GuiUtils.drawBox(x,y+17,width,3, new Color(213, 213, 213));
     }

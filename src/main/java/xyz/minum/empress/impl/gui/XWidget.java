@@ -1,9 +1,7 @@
 package xyz.minum.empress.impl.gui;
 
-import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.utils.render.GuiComponent;
 import xyz.minum.empress.api.utils.render.GuiUtils;
-import xyz.minum.empress.impl.modules.ClickGui;
 
 public class XWidget extends GuiComponent {
 

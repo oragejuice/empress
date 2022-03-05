@@ -4,7 +4,7 @@ import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Module;
 import xyz.minum.empress.api.utils.render.GuiComponent;
 import xyz.minum.empress.api.utils.render.font.FontUtil;
-import xyz.minum.empress.impl.modules.ClickGui;
+import xyz.minum.empress.impl.modules.client.ClickGui;
 
 import java.awt.*;
 
