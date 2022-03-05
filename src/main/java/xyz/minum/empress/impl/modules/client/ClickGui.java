@@ -1,4 +1,4 @@
-package xyz.minum.empress.impl.modules;
+package xyz.minum.empress.impl.modules.client;
 
 import org.lwjgl.input.Keyboard;
 import xyz.minum.empress.api.module.Category;
@@ -11,12 +11,11 @@ public class ClickGui extends Module {
 
     public ClickGui() {
         super("ClickGui", Category.client);
-        this.setBind(Keyboard.KEY_SEMICOLON);
-
+        this.setBind(Keyboard.KEY_RSHIFT);
     }
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         super.onEnable();
         if(intelliGUI == null) intelliGUI = new inteliiGUI();
         mc.displayGuiScreen(intelliGUI);
