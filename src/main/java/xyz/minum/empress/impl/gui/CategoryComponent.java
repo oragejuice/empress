@@ -36,9 +36,9 @@ public class CategoryComponent extends GuiComponent {
     public void draw(int mouseX, int mouseY, float partialTicks){
         FontUtil.drawString(category.name(), x, y, visible ? Color.WHITE.getRGB() : Color.LIGHT_GRAY.getRGB(), FontUtil.fonts.Helvetica);
         if (visible) {
-            GuiUtils.drawSideArrow(x - 4, y + 3);
+            GuiUtils.drawSideArrow(x - 4, y + 1);
         } else {
-            GuiUtils.drawDownwardsArrow(x - 4, y + 3);
+            GuiUtils.drawDownwardsArrow(x - 4, y + 1);
         }
 
         subModulesHeight = 0;
@@ -46,7 +46,7 @@ public class CategoryComponent extends GuiComponent {
             for (ModuleButton moduleButton : moduleButtons) {
                 moduleButton.updatePosition(x+10,y+FontUtil.getFontHeight() + subModulesHeight);
                 moduleButton.draw(mouseX, mouseY, partialTicks);
-                subModulesHeight += FontUtil.getFontHeight();
+                subModulesHeight += FontUtil.getFontHeight()+3;
             }
             /*
             for(Module module : Empress.INSTANCE.moduleManager.getModules(category)){
@@ -62,7 +62,6 @@ public class CategoryComponent extends GuiComponent {
     public void mouseClicked(int mouseX, int mouseY, int mouseButton){
         if(inside(mouseX, mouseY)) {
             this.visible = !visible;
-            Empress.logger.info("Clicked");
         }
 
         if(visible){

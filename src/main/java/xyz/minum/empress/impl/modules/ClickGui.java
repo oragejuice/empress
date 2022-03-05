@@ -7,7 +7,7 @@ import xyz.minum.empress.impl.gui.inteliiGUI;
 
 public class ClickGui extends Module {
 
-    inteliiGUI intelliGUI;
+    public inteliiGUI intelliGUI;
 
     public ClickGui() {
         super("ClickGui", Category.client);

@@ -20,6 +20,11 @@ public class TestModule extends Module {
     @SubscribeEvent
     public void onTick(TickEvent event){
         if(mc.player == null || mc.world == null) return;
-        mc.player.sendChatMessage(testSetting.getValue().toString());
+    }
+
+    @Override
+    public void onEnable(){
+        super.onEnable();
+        mc.player.sendChatMessage("TestModule enabled!!!!");
     }
 }

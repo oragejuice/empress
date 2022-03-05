@@ -4,6 +4,7 @@ import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Module;
 import xyz.minum.empress.api.utils.render.GuiComponent;
 import xyz.minum.empress.api.utils.render.font.FontUtil;
+import xyz.minum.empress.impl.modules.ClickGui;
 
 import java.awt.*;
 
@@ -22,7 +23,14 @@ public class ModuleButton extends GuiComponent {
 
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton){
-        if(inside(mouseX, mouseY)) module.toggle();
+        if(inside(mouseX, mouseY)) {
+            if (mouseButton == 0) module.toggle();
+            if (mouseButton == 1) {
+                Empress.INSTANCE.moduleManager.getModule(ClickGui.class).intelliGUI.addTab(module);
+                Empress.logger.info("Clicked with rmousebutton" + module.getName());
+
+            }
+        }
     }
 
     public void updatePosition(int x, int y){

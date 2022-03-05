@@ -20,6 +20,11 @@ public class GuiUtils {
     }
 
 
+    public static void draw2DCross(int x, int y){
+        drawLine(x, y, x+3, y+3, Color.WHITE);
+        drawLine(x, y+3, x+3, y, Color.WHITE);
+    }
+
     public static void drawDownwardsArrow(int x, int y){
         drawLine(x-2, y-1, x, y+1, Color.WHITE);
         drawLine(x+2, y-1, x, y+1, Color.WHITE);

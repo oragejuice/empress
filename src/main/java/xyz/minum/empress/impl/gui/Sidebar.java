@@ -13,6 +13,9 @@ import java.util.Date;
 
 public class Sidebar extends GuiComponent {
 
+    SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+    Date date = new Date();
+
     ArrayList<CategoryComponent> categoryComponents = new ArrayList<>();
 
     int yOffset = 5;
@@ -34,12 +37,11 @@ public class Sidebar extends GuiComponent {
         GuiUtils.drawBox(x, y, width, height, new Color(60,63,65));
 
         GuiUtils.drawBox(x,y,width,20, new Color(49, 51, 53));
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-        Date date = new Date();
+
         FontUtil.drawString(Empress.MOD_ID + " - " + formatter.format(date),x+4,y+9, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);
 
         FontUtil.drawString(Empress.MOD_ID+"."+Empress.VERSION, x+7,y+24, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);
-        GuiUtils.drawDownwardsArrow(x+3,y+27);
+        GuiUtils.drawDownwardsArrow(x+3,y+25);
 
 
         int yOffset = 5;

@@ -5,6 +5,8 @@ import java.io.InputStream;
 public class FontUtil {
 
     private static FontRenderer globalFont = new FontRenderer(getFont("JetBrainsMono-Regular", 30));
+    private static FontRenderer fontRenderer = new FontRenderer(getFont("Helvetica", 35));
+
 
     public static void drawString(String text, float x, float y, int color){
         if(globalFont == null){
@@ -14,13 +16,11 @@ public class FontUtil {
     }
 
     public static void drawString(String text, float x, float y, int color, fonts font){
-        FontRenderer fontRenderer = new FontRenderer(getFont("JetBrainsMono-Regular", 30));
         if(font.equals(fonts.JetBrains)){
-            fontRenderer = new FontRenderer(getFont("JetBrainsMono-Regular", 30));
+            globalFont.drawString(text, x, y, color, false);
         } else if (font.equals(fonts.Helvetica)){
-            fontRenderer = new FontRenderer(getFont("Helvetica", 30));
+            fontRenderer.drawString(text, x, y, color, false);
         }
-        globalFont.drawString(text, x, y, color, false);
     }
 
 
