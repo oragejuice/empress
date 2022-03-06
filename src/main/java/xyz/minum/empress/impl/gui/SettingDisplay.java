@@ -1,8 +1,12 @@
 package xyz.minum.empress.impl.gui;
 
+
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
 import xyz.minum.empress.api.module.Module;
 import xyz.minum.empress.api.setting.Setting;
 import xyz.minum.empress.api.utils.render.GuiComponent;
+import xyz.minum.empress.api.utils.render.ScissorStack;
 import xyz.minum.empress.api.utils.render.TextGuiComponent;
 import xyz.minum.empress.api.utils.render.font.FontUtil;
 import xyz.minum.empress.impl.gui.text.BooleanSettingComponent;
@@ -17,17 +21,46 @@ public class SettingDisplay extends GuiComponent {
 
     public Module module;
     ArrayList<TextGuiComponent> settingComponents = new ArrayList<>();
+    private int scroll;
+    private ScissorStack scissorStack = new ScissorStack();
+
 
     public SettingDisplay(int x, int y, int width, int height) {
         super(x, y, width, height);
     }
 
+
+    public int getScroll() {
+        return scroll;
+    }
+
+    public void incrementScroll(int scroll) {
+        this.scroll += scroll;
+    }
+
+
+    public void handleMouseInput() throws IOException {
+        settingComponents.forEach(textGuiComponent -> textGuiComponent.setY(textGuiComponent.getY()+Mouse.getEventDWheel()/10));
+    }
+
+    public void setScroll(int scroll){
+        this.scroll = scroll;
+    }
+
+
     public void draw(int mouseX, int mouseY, float partialTicks){
+
+        //GL11.glPushMatrix();
+        //scissorStack.pushScissor(x,y,width,height);
+
         if(module == null || settingComponents.isEmpty()) return;
         for(TextGuiComponent component : settingComponents){
+            component.setY(component.getY());
             component.draw(mouseX, mouseY, partialTicks);
         }
 
+        //scissorStack.popScissor();
+        //GL11.glPopMatrix();
     }
 
     public void keyTyped(char typedChar, int keyCode) throws IOException {
@@ -52,6 +85,7 @@ public class SettingDisplay extends GuiComponent {
             this.module = tabButton.module;
             settingComponents.clear();
             settingComponents.add( new HeaderComponent(this.x, this.y, module));
+            int tabWidth = FontUtil.getStringWidth("    ");
             int yOffset = settingComponents.get(0).getLines()* FontUtil.getFontHeight(FontUtil.fonts.JetBrains) + 9;
             for(Setting<?> setting : module.getSettings()){
 

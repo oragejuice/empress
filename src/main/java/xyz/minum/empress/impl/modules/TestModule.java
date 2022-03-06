@@ -30,7 +30,7 @@ public class TestModule extends Module {
     public void onTick(TickEvent event){
         if(mc.player == null || mc.world == null) return;
 
-        if(i >= 10){
+        if(i >= 20){
             mc.player.sendChatMessage(testSetting.getValue().toString() + " - " + testDouble.getValue().toString() + " - " + testEnumSetting1.getValue().toString());
             i = 0;
         }

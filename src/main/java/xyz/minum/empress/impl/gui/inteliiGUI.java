@@ -1,6 +1,7 @@
 package xyz.minum.empress.impl.gui;
 
 import net.minecraft.client.gui.GuiScreen;
+import org.lwjgl.input.Mouse;
 import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Module;
 import xyz.minum.empress.api.utils.MathUtils;
@@ -19,6 +20,14 @@ public class inteliiGUI extends GuiScreen {
     private CopyOnWriteArrayList<TabButton> tabs = new CopyOnWriteArrayList<>();
     private TabButton focusedTab;
     private SettingDisplay settingDisplay = new SettingDisplay(155,60,540,500);
+
+
+    @Override
+    public void handleMouseInput() throws IOException {
+        //settingDisplay.setScroll(Mouse.getEventDWheel());
+        settingDisplay.handleMouseInput();
+        super.handleMouseInput();
+    }
 
 
     @Override

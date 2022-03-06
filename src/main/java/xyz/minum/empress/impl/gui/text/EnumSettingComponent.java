@@ -1,10 +1,6 @@
 package xyz.minum.empress.impl.gui.text;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
-import org.apache.commons.lang3.EnumUtils;
-import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.setting.Setting;
-import xyz.minum.empress.api.utils.render.GuiUtils;
 import xyz.minum.empress.api.utils.render.TextGuiComponent;
 import xyz.minum.empress.api.utils.render.font.FontUtil;
 
@@ -16,9 +12,8 @@ public class EnumSettingComponent extends TextGuiComponent {
 
     Setting<Enum<?>> setting;
     String head;
-    String tail = "§6}";
+    String tail = "§f}";
     String[] modes;
-
 
     public EnumSettingComponent(int x, int y, Setting<Enum<?>> setting) {
         super(x, y, 3);
@@ -32,13 +27,10 @@ public class EnumSettingComponent extends TextGuiComponent {
 
         modes = getNames((Class<? extends Enum<?>>) setting.getValue().getClass());
 
-
         head = "§6private " + "§4enum §f" +  setting.getName() + " {";
         FontUtil.drawString(head, x, y, Color.WHITE.getRGB());
         FontUtil.drawString("   " + String.join(", ", modes), x, y+FontUtil.getFontHeight(FontUtil.fonts.JetBrains)+3, Color.WHITE.getRGB());
         FontUtil.drawString(tail, x, y+FontUtil.getFontHeight(FontUtil.fonts.JetBrains)*2+3, Color.WHITE.getRGB());
-
-
     }
 
     @Override
