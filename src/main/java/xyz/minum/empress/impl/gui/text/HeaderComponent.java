@@ -43,7 +43,7 @@ public class HeaderComponent extends TextGuiComponent {
         //GuiUtils.drawBox(sX, y+FontUtil.getFontHeight(FontUtil.fonts.JetBrains)*(1+i), FontUtil.getStringWidth(Keyboard.getKeyName(module.getBind())), FontUtil.getFontHeight(FontUtil.fonts.JetBrains), Color.WHITE.getRGB());
 
         desc = ChatFormatting.DARK_GRAY + "/* " + module.getDescription() + " */";
-        header = "§6public " + ChatFormatting.BLUE + module.getName() + "()" + " §6extends " + ChatFormatting.WHITE + "Module {";
+        header = "§6public " + ChatFormatting.BLUE + module.getName() + "§f()" + " §6extends " + ChatFormatting.WHITE + "Module {";
         bind = ChatFormatting.RED + "    super" + ChatFormatting.WHITE + "(" + "§4bind." + ChatFormatting.GRAY + (binding ? "..." : Keyboard.getKeyName(module.getBind())) + ChatFormatting.WHITE + ")";
         closer = ChatFormatting.WHITE + "}";
 

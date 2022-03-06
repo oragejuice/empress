@@ -8,6 +8,7 @@ import xyz.minum.empress.api.utils.render.font.FontUtil;
 import xyz.minum.empress.impl.gui.text.BooleanSettingComponent;
 import xyz.minum.empress.impl.gui.text.EnumSettingComponent;
 import xyz.minum.empress.impl.gui.text.HeaderComponent;
+import xyz.minum.empress.impl.gui.text.NumericalSettingComponent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,7 +50,6 @@ public class SettingDisplay extends GuiComponent {
             this.module = null;
         } else{
             this.module = tabButton.module;
-            //headerComponent = new HeaderComponent(this.x, this.y, module);
             settingComponents.clear();
             settingComponents.add( new HeaderComponent(this.x, this.y, module));
             int yOffset = settingComponents.get(0).getLines()* FontUtil.getFontHeight(FontUtil.fonts.JetBrains) + 9;
@@ -63,6 +63,12 @@ public class SettingDisplay extends GuiComponent {
 
                 else if(setting.getValue() instanceof Enum<?>){
                     EnumSettingComponent b = new EnumSettingComponent(this.x, this.y+yOffset, (Setting<Enum<?>>) setting);
+                    settingComponents.add(b);
+                    yOffset += b.getLines()*FontUtil.getFontHeight(FontUtil.fonts.JetBrains) + FontUtil.getFontHeight(FontUtil.fonts.JetBrains);
+                }
+
+                else if(setting.getValue() instanceof Double){
+                    NumericalSettingComponent b = new NumericalSettingComponent(this.x, this.y+yOffset, (Setting<Double>) setting);
                     settingComponents.add(b);
                     yOffset += b.getLines()*FontUtil.getFontHeight(FontUtil.fonts.JetBrains) + FontUtil.getFontHeight(FontUtil.fonts.JetBrains);
                 }

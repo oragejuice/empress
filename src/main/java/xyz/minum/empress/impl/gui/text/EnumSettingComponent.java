@@ -16,8 +16,7 @@ public class EnumSettingComponent extends TextGuiComponent {
 
     Setting<Enum<?>> setting;
     String head;
-    String list;
-    String tail = "}";
+    String tail = "§6}";
     String[] modes;
 
 

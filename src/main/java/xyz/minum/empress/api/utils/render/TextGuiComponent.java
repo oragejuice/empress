@@ -50,6 +50,10 @@ public abstract class TextGuiComponent {
         return lines;
     }
 
+    public void onKeyPressed(char typedChar, int keyCode) throws IOException {
+
+    }
+
     public int getHeight(){
         return lines * (FontUtil.getFontHeight(FontUtil.fonts.JetBrains)+1);
     }

@@ -15,6 +15,9 @@ public class TestModule extends Module {
     public static Setting<Boolean> testSetting3 = new Setting<>("testSetting3", true);
     public static Setting<Boolean> testSetting4 = new Setting<>("testSetting4", true);
     public static Setting<testEnum> testEnumSetting1 = new Setting<>("testEnumSetting", testEnum.poop);
+    public static Setting<Double> testDouble = new Setting<>("testDouble", 3.0,0.0,10.0);
+
+    int i = 0;
 
 
 
@@ -26,6 +29,12 @@ public class TestModule extends Module {
     @SubscribeEvent
     public void onTick(TickEvent event){
         if(mc.player == null || mc.world == null) return;
+
+        if(i >= 10){
+            mc.player.sendChatMessage(testSetting.getValue().toString() + " - " + testDouble.getValue().toString() + " - " + testEnumSetting1.getValue().toString());
+            i = 0;
+        }
+        i++;
     }
 
     @Override
