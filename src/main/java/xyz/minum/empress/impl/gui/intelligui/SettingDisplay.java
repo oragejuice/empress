@@ -1,18 +1,17 @@
-package xyz.minum.empress.impl.gui;
+package xyz.minum.empress.impl.gui.intelligui;
 
 
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
 import xyz.minum.empress.api.module.Module;
 import xyz.minum.empress.api.setting.Setting;
 import xyz.minum.empress.api.utils.render.GuiComponent;
 import xyz.minum.empress.api.utils.render.ScissorStack;
 import xyz.minum.empress.api.utils.render.TextGuiComponent;
 import xyz.minum.empress.api.utils.render.font.FontUtil;
-import xyz.minum.empress.impl.gui.text.BooleanSettingComponent;
-import xyz.minum.empress.impl.gui.text.EnumSettingComponent;
-import xyz.minum.empress.impl.gui.text.HeaderComponent;
-import xyz.minum.empress.impl.gui.text.NumericalSettingComponent;
+import xyz.minum.empress.impl.gui.intelligui.text.BooleanSettingComponent;
+import xyz.minum.empress.impl.gui.intelligui.text.EnumSettingComponent;
+import xyz.minum.empress.impl.gui.intelligui.text.HeaderComponent;
+import xyz.minum.empress.impl.gui.intelligui.text.NumericalSettingComponent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +39,10 @@ public class SettingDisplay extends GuiComponent {
 
 
     public void handleMouseInput() throws IOException {
-        settingComponents.forEach(textGuiComponent -> textGuiComponent.setY(textGuiComponent.getY()+Mouse.getEventDWheel()/10));
+        //TODO make not be able to scroll off screen
+        settingComponents.forEach(textGuiComponent -> {
+            textGuiComponent.setY(textGuiComponent.getY() + Mouse.getEventDWheel() / 10);
+        });
     }
 
     public void setScroll(int scroll){
@@ -50,17 +52,12 @@ public class SettingDisplay extends GuiComponent {
 
     public void draw(int mouseX, int mouseY, float partialTicks){
 
-        //GL11.glPushMatrix();
-        //scissorStack.pushScissor(x,y,width,height);
-
         if(module == null || settingComponents.isEmpty()) return;
         for(TextGuiComponent component : settingComponents){
             component.setY(component.getY());
             component.draw(mouseX, mouseY, partialTicks);
         }
 
-        //scissorStack.popScissor();
-        //GL11.glPopMatrix();
     }
 
     public void keyTyped(char typedChar, int keyCode) throws IOException {
@@ -110,4 +107,5 @@ public class SettingDisplay extends GuiComponent {
             }
         }
     }
+
 }

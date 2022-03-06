@@ -1,4 +1,4 @@
-package xyz.minum.empress.impl.gui;
+package xyz.minum.empress.impl.gui.intelligui;
 
 import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Category;

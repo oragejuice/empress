@@ -1,16 +1,14 @@
-package xyz.minum.empress.impl.gui.text;
+package xyz.minum.empress.impl.gui.intelligui.text;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import org.lwjgl.input.Keyboard;
 import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Module;
-import xyz.minum.empress.api.utils.render.GuiUtils;
 import xyz.minum.empress.api.utils.render.TextGuiComponent;
 import xyz.minum.empress.api.utils.render.font.FontUtil;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class HeaderComponent extends TextGuiComponent {

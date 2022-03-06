@@ -1,11 +1,12 @@
-package xyz.minum.empress.impl.gui;
+package xyz.minum.empress.impl.gui.intelligui;
 
 import net.minecraft.client.gui.GuiScreen;
-import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
 import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Module;
 import xyz.minum.empress.api.utils.MathUtils;
 import xyz.minum.empress.api.utils.render.GuiUtils;
+import xyz.minum.empress.api.utils.render.ScissorStack;
 import xyz.minum.empress.impl.modules.client.ClickGui;
 
 import java.awt.*;
@@ -13,13 +14,14 @@ import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
-public class inteliiGUI extends GuiScreen {
+public class IntelliGUI extends GuiScreen {
 
     Sidebar sidebar = new Sidebar(50,30,100,400);
 
     private CopyOnWriteArrayList<TabButton> tabs = new CopyOnWriteArrayList<>();
     private TabButton focusedTab;
     private SettingDisplay settingDisplay = new SettingDisplay(155,60,540,500);
+    private ScissorStack scissorStack = new ScissorStack();
 
 
     @Override
@@ -48,7 +50,12 @@ public class inteliiGUI extends GuiScreen {
             xOffset += 70;
         }
 
+
+        GL11.glPushMatrix();
+        scissorStack.pushScissor(150,55,540,375);
         settingDisplay.draw(mouseX, mouseY, partialTicks);
+        scissorStack.popScissor();
+        GL11.glPopMatrix();
     }
 
     @Override

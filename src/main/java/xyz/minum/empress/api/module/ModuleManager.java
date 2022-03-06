@@ -3,7 +3,11 @@ package xyz.minum.empress.api.module;
 
 import xyz.minum.empress.impl.modules.client.ClickGui;
 import xyz.minum.empress.impl.modules.TestModule;
+import xyz.minum.empress.impl.modules.combat.Aura;
+import xyz.minum.empress.impl.modules.player.Phase;
+import xyz.minum.empress.impl.modules.player.Timer;
 import xyz.minum.empress.impl.modules.player.Velocity;
+import xyz.minum.empress.impl.modules.world.Fakeplayer;
 import xyz.minum.empress.impl.modules.world.Fullbright;
 
 import java.util.ArrayList;
@@ -19,6 +23,10 @@ public class ModuleManager {
         modules.add(new ClickGui());
         modules.add(new Velocity());
         modules.add(new Fullbright());
+        modules.add(new Timer());
+        modules.add(new Phase());
+        modules.add(new Fakeplayer());
+        modules.add(new Aura());
 
     }
 

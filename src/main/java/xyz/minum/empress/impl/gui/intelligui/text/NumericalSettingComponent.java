@@ -1,4 +1,4 @@
-package xyz.minum.empress.impl.gui.text;
+package xyz.minum.empress.impl.gui.intelligui.text;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import org.lwjgl.input.Keyboard;
@@ -40,12 +40,13 @@ public class NumericalSettingComponent extends TextGuiComponent {
     public void keyTyped(char typedChar, int keyCode) throws IOException {
         if(capturing){
             if(keyCode == Keyboard.KEY_RETURN || keyCode == Keyboard.KEY_ESCAPE){
+                capturing = false;
                 if (!isNumeric(stringValue)) {
                     stringValue = setting.getValue().toString();
                     return;
                 }
                 Double s = Double.valueOf(stringValue);
-                setting.setValue(s);
+                setting.setValue(Math.max(Math.min(s , setting.getMax()), setting.getMin()));
             } else if(keyCode == Keyboard.KEY_BACK){
                 if(stringValue.isEmpty()) return;
                 stringValue = stringValue.substring(0,stringValue.length()-1);

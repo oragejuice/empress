@@ -1,4 +1,4 @@
-package xyz.minum.empress.impl.gui.text;
+package xyz.minum.empress.impl.gui.intelligui.text;
 
 import xyz.minum.empress.api.setting.Setting;
 import xyz.minum.empress.api.utils.render.TextGuiComponent;

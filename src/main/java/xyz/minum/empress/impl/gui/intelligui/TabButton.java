@@ -1,6 +1,5 @@
-package xyz.minum.empress.impl.gui;
+package xyz.minum.empress.impl.gui.intelligui;
 
-import net.minecraft.client.gui.Gui;
 import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Module;
 import xyz.minum.empress.api.utils.render.GuiComponent;

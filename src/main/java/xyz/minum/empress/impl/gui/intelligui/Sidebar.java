@@ -1,4 +1,4 @@
-package xyz.minum.empress.impl.gui;
+package xyz.minum.empress.impl.gui.intelligui;
 
 import xyz.minum.empress.Empress;
 import xyz.minum.empress.api.module.Category;
@@ -36,6 +36,7 @@ public class Sidebar extends GuiComponent {
 
         GuiUtils.drawBox(x,y,width,20, new Color(49, 51, 53));
 
+        date = new Date();
         FontUtil.drawString(Empress.MOD_ID + " - " + formatter.format(date),x+5,y+9, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);
 
         FontUtil.drawString(Empress.MOD_ID+"."+Empress.VERSION, x+7,y+24, Color.WHITE.getRGB(), FontUtil.fonts.Helvetica);

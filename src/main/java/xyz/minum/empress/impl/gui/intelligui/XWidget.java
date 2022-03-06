@@ -1,4 +1,4 @@
-package xyz.minum.empress.impl.gui;
+package xyz.minum.empress.impl.gui.intelligui;
 
 import xyz.minum.empress.api.utils.render.GuiComponent;
 import xyz.minum.empress.api.utils.render.GuiUtils;
