@@ -3,6 +3,7 @@ package xyz.minum.empress.api.event;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import org.lwjgl.input.Keyboard;
 import xyz.minum.empress.Empress;
 
@@ -19,5 +20,10 @@ public class EventHandler {
                     }
             );
         }
+    }
+
+    @SubscribeEvent
+    public void onDisconnect(FMLNetworkEvent.ClientDisconnectionFromServerEvent event){
+        Empress.INSTANCE.configManager.save();
     }
 }

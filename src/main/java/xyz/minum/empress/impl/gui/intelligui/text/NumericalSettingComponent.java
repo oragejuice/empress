@@ -67,6 +67,12 @@ public class NumericalSettingComponent extends TextGuiComponent {
             capturing = true;
         } else {
             capturing = false;
+            if (!isNumeric(stringValue)) {
+                stringValue = setting.getValue().toString();
+                return;
+            }
+            Double s = Double.valueOf(stringValue);
+            setting.setValue(Math.max(Math.min(s , setting.getMax()), setting.getMin()));
         }
 
         Empress.logger.info("capturing" + capturing);

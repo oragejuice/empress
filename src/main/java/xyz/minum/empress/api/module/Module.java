@@ -73,6 +73,7 @@ public abstract class Module implements Globals {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+        if (enabled) onEnable(); else onDisable();
     }
 
     public void toggle(){
