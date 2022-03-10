@@ -34,7 +34,7 @@ public class Fakeplayer extends Module {
         try {
             mc.world.removeEntity(fakePlayer);
         } catch (NullPointerException e) {
-            Empress.logger.info("Failed to remove FakePlayer" + fakePlayer.getName());
+            Empress.logger.info("Failed to remove FakePlayer");
         }
         super.onDisable();
     }

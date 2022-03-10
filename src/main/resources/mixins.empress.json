@@ -3,10 +3,12 @@
   "package": "xyz.minum.empress.core.mixins",
   "refmap": "mixins.empress.refmap.json",
   "mixins": [
-    "MixinNetworkManager"
+    "MixinNetworkManager",
+    "accessor.IEntityRenderer"
   ],
   "client": [
-    "MixinMinecraft"
+    "MixinMinecraft",
+    "accessor.IRenderManager"
   ],
   "server": []
 }

@@ -3,10 +3,13 @@ package xyz.minum.empress.api.module;
 
 import xyz.minum.empress.impl.modules.client.ClickGui;
 import xyz.minum.empress.impl.modules.TestModule;
+import xyz.minum.empress.impl.modules.client.Watermark;
 import xyz.minum.empress.impl.modules.combat.Aura;
+import xyz.minum.empress.impl.modules.combat.ChorusController;
 import xyz.minum.empress.impl.modules.player.Phase;
 import xyz.minum.empress.impl.modules.player.Timer;
 import xyz.minum.empress.impl.modules.player.Velocity;
+import xyz.minum.empress.impl.modules.world.ESP;
 import xyz.minum.empress.impl.modules.world.Fakeplayer;
 import xyz.minum.empress.impl.modules.world.Fullbright;
 
@@ -27,6 +30,9 @@ public class ModuleManager {
         modules.add(new Phase());
         modules.add(new Fakeplayer());
         modules.add(new Aura());
+        modules.add(new Watermark());
+        modules.add(new ESP());
+        modules.add(new ChorusController());
 
     }
 

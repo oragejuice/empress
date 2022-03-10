@@ -37,7 +37,18 @@ public class FontUtil {
     }
 
     public static int getStringWidth(String text) {
-            return globalFont.getStringWidth(text);
+        return  globalFont.getStringWidth(text);
+    }
+
+    public static int getStringWidth(String text, fonts font) {
+        if(font == fonts.JetBrains){
+            return  globalFont.getStringWidth(text);
+        } else if (font == fonts.Helvetica){
+            return fontRenderer.getStringWidth(text);
+        }
+        else {
+            return  globalFont.getStringWidth(text);
+        }
     }
 
 
