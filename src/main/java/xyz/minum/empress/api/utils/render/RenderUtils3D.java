@@ -30,7 +30,6 @@ public class RenderUtils3D implements Globals {
         glGetFloat(GL_PROJECTION_MATRIX, PROJECTION);
         glGetInteger(GL_VIEWPORT, VIEWPORT);
         final ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
-        GLUProjection.getInstance().updateMatrices(VIEWPORT, MODELVIEW, PROJECTION, (float) res.getScaledWidth() / (float) Minecraft.getMinecraft().displayWidth, (float) res.getScaledHeight() / (float) Minecraft.getMinecraft().displayHeight);
     }
 
     public static void drawLine3D(double x, double y, double z, double x1, double y1, double z1, float thickness, int hex) {
